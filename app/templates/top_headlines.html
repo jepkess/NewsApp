@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>education</title>
+</head>
+
+<body>
+    <ul>
+        {% for topheadlines in top_headlines %}
+        <li>{{topheadlines.author}}</li>
+        <p><a href="{{topheadlines.url}}"  target="_blank">read more</a></p>
+        {%endfor%}
+    </ul>
+</body>
+
+</html>
