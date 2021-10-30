@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sources</title>
+</head>
+
+<body>
+
+    <h3> Source News</h3>
+    {% for sources in news_sources %}
+    <li>{{ sources.id}}</li>
+    <p>{{sources.name}}</p>
+    <p>{{ sources.description }}- <a href="{{sources.url}}">read more</a></p>
+    <p><em>{{ sources.category}}</em></p>
+    <p>{{ sources.country}}</p>
+    {% endfor %}
+
+</body>
+
+</html>
