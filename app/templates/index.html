@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        {% if title %}
-        <title> {{ title }}</title>
-        {% else %}
-        <title> Welcome to the best News online website </title>
-        {% endif %}
-    </head>
-    <body>
 
-    </body>
+<head>
+    <meta charset="utf-8">
+    {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> Welcome to the best News online website </title>
+    {% endif %}
+</head>
+
+<body>
+    <h2>Hello welcome</h2>
+
+    <a href="{{ url_for('articles') }}">Articles</a>
+    <a href="{{ url_for('sources') }}">Sources</a>
+
+
+</body>
+
 </html>
