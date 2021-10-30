@@ -12,12 +12,12 @@ def index():
     title = " HOME-Welcome to the best News online website"
     return render_template('index.html',title=title)
 
-@app.route('/articles/<source>')
-def articles():
+@app.route('/articles/<int:article_id>')
+def articles(article_id):
     """
      View articles for a specific source page function that returns the article details page and its data.
     """
-    return render_template('article.html')
+    return render_template('article.html',id=article_id)
 
 
 
