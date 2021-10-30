@@ -1,3 +1,4 @@
+{% extends 'base.html'%}
 <!DOCTYPE html>
 <html>
 
@@ -11,11 +12,12 @@
 </head>
 
 <body>
-    <h2>Hello welcome</h2>
+    <!-- content block -->
+    {% block content %}
 
     <a href="{{ url_for('articles') }}">Articles</a>
     <a href="{{ url_for('sources') }}">Sources</a>
-
+    {% endblock %}
 
 </body>
 
