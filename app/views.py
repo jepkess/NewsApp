@@ -38,24 +38,7 @@ def sources():
     title = " HOME-Welcome to the best News online website"
     return render_template('sources.html',title=title,news_sources=news_sources)
 
-########################################################
 
-@app.route('/top_headlines')
-def education():
-
-    '''
-    View root page function that returns the index page and its data
-
-    '''
-    top_headlines=get_news('top-headlines')
-    title = "top-headlines"
-    return render_template('top_headlines.html',title=title,top_headlines=top_headlines)
-# @app.route('/articles/<int:article_id>')
-# def articles(article_id):
-#     """
-#      View articles for a specific source page function that returns the article details page and its data.
-#     """
-#     return render_template('article.html',id=article_id)
 
 
 
