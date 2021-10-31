@@ -8,8 +8,9 @@
     {% for article in articles %}
     <li>{{ article.title}}</li>
     <p>{{article.author}}</p>
+    <img  src="{{ article.image}}" id="image"  alt="article image">
     <p>{{ article.description }}- <a class="btn btn-primary btn-sm" href="{{article.url}}">read more</a></p>
-    <img src="{{ article.image}}" alt="article image">
+    
     <p><em>{{ article.publishedAt}}</em></p>
     {% endfor %}
 </ul>
