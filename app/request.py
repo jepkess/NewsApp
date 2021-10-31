@@ -1,4 +1,4 @@
-from app import app
+# from app import app
 import urllib.request,json
 from .models import Article,Source
 
@@ -27,7 +27,7 @@ def configure_request(app):
 
     news_sources_url = app.config["NEWS_SOURCES_API_BASE_URL"]
 
-    articles_url = app.config["SPECIFIC_SOURCE_API_URL"]
+    articles_url = app.config["SPECIFIC_ARTICLES_BASE_URL"]
 
 
 def get_articles(category):
@@ -70,7 +70,7 @@ def process_results(news_list):
         publishedAt = news_item.get('publishedAt')
 
         if author:
-            news_object = Article.Article(author,title,description,url,image,publishedAt)
+            news_object = Article(author,title,description,url,image,publishedAt)
             news_results.append(news_object)
 
     return news_results
@@ -120,7 +120,7 @@ def process_sources(source_list):
         country = source_item.get('country')
 
         if name:
-            news_object_sources = Article.Source(id,name,description,url,category,country)
+            news_object_sources = Source(id,name,description,url,category,country)
             news_sources.append(news_object_sources)
 
     return news_sources
