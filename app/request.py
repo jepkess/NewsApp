@@ -8,11 +8,11 @@ from .models import article
 
 
 # Getting the movie base url
-base_url_artciles = app.config["NEWS_ARTICLES_API_BASE_URL"]
+base_url_artciles = app.config["SPECIFIC_ARTICLES_BASE_URL"]
 base_url_sources=app.config["NEWS_SOURCES_API_BASE_URL"]
 news_api_key=app.config["API_KEY"]
 
-def get_news(category):
+def get_articles(category):
     '''
     Function that gets the json response to our url request
     '''
