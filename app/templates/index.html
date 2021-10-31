@@ -1,5 +1,6 @@
 {% extends 'base.html'%}
 
+
 <!-- content block -->
 {% block content %}
 {{ super() }}
@@ -7,14 +8,18 @@
 
 
 
-<div class="container">
-    <h3> The different news sources</h3>
-    {% for source in sources %}
-    <p>Find different articles in this source,click  <a  href="/articles/{{source.id}}">Here</a></p>
-    <p>{{source.name}}</p><br>
-    <p>{{ source.description }}- <a class="btn btn-primary btn-sm" href="{{source.url}}">read more</a></p>
-    <p><em>{{ source.category}}</em></p>
-    <p>{{ source.country}}</p>
-    {% endfor %}
+<div class="container bg-success">
+    <h3 class="text-center text-danger header">Different news sources and articles links</h3>
+   <div class="row">
+       <div class="col-md-12">
+        {% for source in sources %}
+        <p class="text-primary" >{{source.name}}</p><br>
+        <p>{{ source.description }}- <a class="btn btn-primary btn-sm" href="{{source.url}}">read more</a></p>
+        <p><em>{{ source.category}}</em></p>
+        <p>{{ source.country}}</p>
+        <p>To find different articles in this source,click  <a class="btn btn-danger btn-sm" href="/articles/{{source.id}}">Here</a></p>
+        {% endfor %}
+       </div>
+   </div>
 </div>
 {% endblock %}
