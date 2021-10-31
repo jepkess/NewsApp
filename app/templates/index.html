@@ -1,26 +1,20 @@
 {% extends 'base.html'%}
-<!DOCTYPE html>
-<html>
 
-<head>
-    <meta charset="utf-8">
-    {% if title %}
-    <title> {{ title }}</title>
-    {% else %}
-    <title> Welcome to the best News online website </title>
-    {% endif %}
-</head>
+<!-- content block -->
+{% block content %}
+{{ super() }}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 
-<body>
-    <!-- content block -->
-    {% block content %}
-    {{ super() }}
-    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 
-    <a href="{{ url_for('articles') }}">Articles</a>
-    <a href="{{ url_for('sources') }}">Sources</a>
-    {% endblock %}
 
-</body>
-
-</html>
+<div class="container">
+    <h3> The different news sources</h3>
+    {% for source in sources %}
+    <p>Find different articles in this source,click  <a  href="/articles/{{source.id}}">Here</a></p>
+    <p>{{source.name}}</p><br>
+    <p>{{ source.description }}- <a class="btn btn-primary btn-sm" href="{{source.url}}">read more</a></p>
+    <p><em>{{ source.category}}</em></p>
+    <p>{{ source.country}}</p>
+    {% endfor %}
+</div>
+{% endblock %}
