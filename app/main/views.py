@@ -1,10 +1,10 @@
-from flask import render_template
-from app import app
-from .request import get_articles,get_source
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..request import get_source,get_articles
 
 # Views
 #displaying the source on the homepage
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -15,7 +15,7 @@ def index():
     title = "news"
     return render_template('index.html',title=title,sources=response)
 
-@app.route('/articles/<source>',methods=['GET']) # get method to get data from the api
+@main.route('/articles/<source>',methods=['GET']) # get method to get data from the api
 def articles(source):
 
     '''
