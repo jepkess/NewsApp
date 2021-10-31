@@ -1,22 +1,40 @@
 from app import app
 import urllib.request,json
+from .models import Article,Source
 
-# from app.article_test import Article
-from .models import article
+Source = Source
+
+Article = Article
+
+api_key = None
+
+news_sources_url = None
+
+articles_url = None
 
 #Getting the api key
 
 
 # Getting the movie base url
-base_url_artciles = app.config["SPECIFIC_ARTICLES_BASE_URL"]
-base_url_sources=app.config["NEWS_SOURCES_API_BASE_URL"]
-news_api_key=app.config["API_KEY"]
+# base_url_articles = app.config["SPECIFIC_ARTICLES_BASE_URL"]
+# base_url_sources=app.config["NEWS_SOURCES_API_BASE_URL"]
+# news_api_key=app.config["API_KEY"]
+
+def configure_request(app):
+    global api_key,news_sources_url,articles_url
+    #Getting api key
+    api_key = app.config['NEWS_API_KEY']
+
+    news_sources_url = app.config["NEWS_SOURCES_API_BASE_URL"]
+
+    articles_url = app.config["SPECIFIC_SOURCE_API_URL"]
+
 
 def get_articles(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_news_url = base_url_artciles.format(category,news_api_key)
+    get_news_url = articles_url.format(category,api_key)
 
     with urllib.request.urlopen(get_news_url) as url:
         get_news_data = url.read()
@@ -52,7 +70,7 @@ def process_results(news_list):
         publishedAt = news_item.get('publishedAt')
 
         if author:
-            news_object = article.Article(author,title,description,url,image,publishedAt)
+            news_object = Article.Article(author,title,description,url,image,publishedAt)
             news_results.append(news_object)
 
     return news_results
@@ -66,7 +84,7 @@ def get_source(data):
     '''
     Function that gets the json response to our url request
     '''
-    get_newsurl = base_url_sources.format(data,news_api_key)
+    get_newsurl = news_sources_url.format(data,api_key)
 
     with urllib.request.urlopen(get_newsurl) as url:
         get_source_data = url.read()
@@ -102,7 +120,7 @@ def process_sources(source_list):
         country = source_item.get('country')
 
         if name:
-            news_object_sources = article.Source(id,name,description,url,category,country)
+            news_object_sources = Article.Source(id,name,description,url,category,country)
             news_sources.append(news_object_sources)
 
     return news_sources
