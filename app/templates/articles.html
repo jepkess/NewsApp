@@ -1,21 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
-</head>
-<body>
-    <h3> Article News</h3>
-    <ul>
-        {% for technology_news in technology_news %}
-        <li>{{ technology_news.title}}</li>
-        <p>{{technology_news.author}}</p>
-        <p>{{ technology_news.description }}- <a href="{{technology_news.url}}">read more</a></p>
-        <p><em>{{ technology_news.publishedAt}}</em></p>
-        {% endfor %}
-    </ul>
-    
-</body>
-</html>
+{% extends 'base.html'%}
+
+<!-- block content -->
+{%block content%}
+<div class="container bg-success">
+    <h3>{{ source}}</h3>
+<ul>
+    {% for article in articles %}
+    <li>{{ article.title}}</li>
+    <p>{{article.author}}</p>
+    <p>{{ article.description }}- <a class="btn btn-primary btn-sm" href="{{article.url}}">read more</a></p>
+    <img src="{{ article.image}}" alt="article image">
+    <p><em>{{ article.publishedAt}}</em></p>
+    {% endfor %}
+</ul>
+</div>
+{% endblock%}
+
+
