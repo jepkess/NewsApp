@@ -14,6 +14,8 @@
 <body>
     <!-- content block -->
     {% block content %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
 
     <a href="{{ url_for('articles') }}">Articles</a>
     <a href="{{ url_for('sources') }}">Sources</a>
