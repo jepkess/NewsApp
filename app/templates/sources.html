@@ -10,14 +10,19 @@
 
 <body>
 
+   <div class="container bg-primary">
+   <div class="row">
     <h3> Source News</h3>
     {% for sources in news_sources %}
     <li>{{ sources.id}}</li>
-    <p>{{sources.name}}</p>
-    <p>{{ sources.description }}- <a href="{{sources.url}}">read more</a></p>
+    <p>{{sources.name}}</p><br>
+    <p>{{ sources.description }}- <a class="btn btn-primary" href="{{sources.url}}">read more</a></p>
     <p><em>{{ sources.category}}</em></p>
     <p>{{ sources.country}}</p>
     {% endfor %}
+   </div>
+
+   </div>
 
 </body>
 
